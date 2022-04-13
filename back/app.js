@@ -21,7 +21,7 @@ mongose.connect('mongodb://' + cluster + '/' + db,
     .catch((e) => console.log(e, 'connexion failed'));
 
 // const todosRoutes = require('./routes/todos');
-// const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
