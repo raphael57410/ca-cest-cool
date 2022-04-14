@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const User = require('../models/User');
 
 const postSchema = Schema({
-    user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    user: [{ type: Schema.Types.ObjectId, ref: User }],
     description: { type: String },
     image: { type: String },
     like: { type: String },

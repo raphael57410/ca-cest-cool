@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 exports.createPost = async (req, res) => {
     try {
         postServices.createPost(req.body);
-        res.status(201).send('le user a été crée!');
+        res.status(201).send('le post a été crée!');
     } catch (error) {
         console.log(error);
     }

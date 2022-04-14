@@ -23,6 +23,7 @@ mongose.connect('mongodb://' + cluster + '/' + db,
 // const todosRoutes = require('./routes/todos');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
+const comentRoutes = require('./routes/coment');
 
 
 const app = express();
@@ -40,6 +41,8 @@ app.use('/ping', (req, res) => {
 // app.use('/api/cacestcool/todos', todosRoutes);
 app.use('/api/cacestcool/users', userRoutes);
 app.use('/api/cacestcool/post', postRoutes);
+app.use('/api/cacestcool/coment', comentRoutes);
+
 
 
 module.exports = app;

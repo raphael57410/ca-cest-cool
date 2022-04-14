@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 exports.createPost = async (data) => {
     const { user, description, image, like } = data;
     const newPost = new Post();
-    console.log(data);
+
     newPost.user = user;
     newPost.description = description;
     newPost.image = image;
