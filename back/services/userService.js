@@ -4,10 +4,9 @@ const saltRounds = 10;
 
 // find User
 exports.findUser = async (email, password) => {
-    const findUser = await User.find({ email: email });
-    const passCompare = await bcrypt.compareSync(password, findUser[0].password);
+    const findUser = await User.find({ email: email }, { password: 0 });
 
-    if (passCompare) return findUser;
+    if (findUser) return findUser;
     else console.log('Vous etes pas inscrit!');
 }
 
