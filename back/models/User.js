@@ -7,9 +7,10 @@ const userSchema = mongoose.Schema({
     password: { type: String, minlength: 5 },
     profilPicture: { type: String },
     bio: { type: String, minlength: 3, maxlength: 280 },
+    userCreated: { type: Date, default: Date.now },
 
 },
-    //{_id: false, timestamp: false}
+    { timestamp: true }
 );
 
 module.exports = mongoose.model('User', userSchema);

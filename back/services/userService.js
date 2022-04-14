@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 exports.findUser = async (email, password) => {
-    const findUser = await User.find({ email: email }).exec();
+    const findUser = await User.find({ email: email });
     const passCompare = await bcrypt.compareSync(password, findUser[0].password);
 
     if (passCompare) return findUser;

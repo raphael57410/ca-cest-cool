@@ -15,7 +15,7 @@ exports.createUser = async (req, res) => {
 
 // Find User
 exports.user = async (req, res) => {
-    const { email, password } = req.body.body;
+    const { email, password } = req.body;
 
     try {
 
