@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+// find User
 exports.findUser = async (email, password) => {
     const findUser = await User.find({ email: email });
     const passCompare = await bcrypt.compareSync(password, findUser[0].password);
