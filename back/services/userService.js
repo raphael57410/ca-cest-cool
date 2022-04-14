@@ -10,11 +10,16 @@ exports.findUser = async (email, password) => {
     else console.log('Vous etes pas inscrit!');
 }
 
-exports.createUser = async (email, password) => {
+// create new User
+exports.createUser = async (lastname, firstname, email, password, profilPicture, bio) => {
     const newUser = new User();
     const passHash = await bcrypt.hashSync(password, saltRounds);
 
-    newUser.password = passHash;
+    newUser.lastname = lastname;
+    newUser.firstname = firstname;
     newUser.email = email;
+    newUser.password = passHash;
+    newUser.profilPicture = profilPicture;
+    newUser.bio = bio;
     newUser.save();
 }

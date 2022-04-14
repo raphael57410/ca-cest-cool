@@ -35,8 +35,8 @@ app.use('/ping', (req, res) => {
     res.status(200).send('ping OK');
 });
 
-// app.use('/api/v1/todos', todosRoutes);
-// app.use('/api/v1/users', userRoutes);
+// app.use('/api/cacestcool/todos', todosRoutes);
+app.use('/api/cacestcool/users', userRoutes);
 
 
 module.exports = app;

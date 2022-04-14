@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 
 // Create User
 exports.createUser = async (req, res) => {
-    // sanitize permets de nétoyer les données reçu et éviter les injections
-    const { email, password } = req.body.body;
+    const { lastname, firstname, email, password, profilPicture, bio } = req.body;
     try {
-        userServices.createUser(email, password);
+        userServices.createUser(lastname, firstname, email, password, profilPicture, bio);
+        res.status(201).send('le user a été crée!');
     } catch (error) {
-
+        console.log(error);
     }
 }
 
