@@ -2,12 +2,11 @@ const { Schema, model } = require('mongoose');
 const User = require('../models/User');
 
 const postSchema = Schema({
-    user: [{ type: Schema.Types.ObjectId, ref: User }],
-    descripiton: { type: String },
+    user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    description: { type: String },
     image: { type: String },
-    like: [{ User }],
+    like: { type: String },
     postCreated: { type: Date, default: Date.now },
-
 }
 );
 

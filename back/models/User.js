@@ -10,7 +10,6 @@ const userSchema = new Schema({
     bio: { type: String, minlength: 3, maxlength: 280 },
     posts: [{ type: Schema.Types.ObjectId, ref: Post }],
     userCreated: { type: Date, default: Date.now },
-
 },
     { timestamp: true }
 );
