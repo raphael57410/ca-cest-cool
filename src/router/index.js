@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import LoginPage from "../components/LoginPage"
+import LoginPage from "../components/loginPage/LoginPage"
 import PageNotFound from "../components/PageNotFound"
 
 const routes = [
