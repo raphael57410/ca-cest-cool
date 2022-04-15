@@ -8,8 +8,16 @@
           alt="cacestcool-logo"
         />
       </div>
-      <input-component type="text" placeholder="email"></input-component>
-      <input-component type="text" placeholder="mot de passe"></input-component>
+      <input-component
+        value="email"
+        type="text"
+        placeholder="email"
+      ></input-component>
+      <input-component
+        value="password"
+        type="password"
+        placeholder="mot de passe"
+      ></input-component>
       <div class="login-button-container">
         <button class="login-button">Se connecter</button>
       </div>
@@ -23,6 +31,12 @@ import "./loginPage.css";
 import InputComponent from "@/components/input/Input";
 
 export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
   components: {
     "input-component": InputComponent,
   },

@@ -1,5 +1,10 @@
 <template>
-  <input class="input" :type="type" :placeholder="placeholder" />
+  <input
+    class="input"
+    :type="type"
+    :placeholder="placeholder"
+    :v-model="value"
+  />
 </template>
 
 <script>
@@ -10,6 +15,7 @@ export default {
   props: {
     type: String,
     placeholder: String,
+    value: String,
   },
 };
 </script>

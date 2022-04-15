@@ -6,6 +6,30 @@
     min-height: 100vh;
 }
 
+.login-container:after {
+    content: "";
+    width: 50%;
+    height: 300px;
+    background: url("../../assets/wave1.png") no-repeat;
+    background-size: cover;
+    bottom: 0;
+    right: 0px;
+    position: absolute;
+
+}
+
+.login-container:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url("../../assets/wave2.png") no-repeat;
+    background-size: contain;
+    bottom: 0;
+    left: 0px;
+    position: absolute;
+
+}
+
 .login-logo-container {
     text-align: center;
 }
@@ -31,7 +55,7 @@ button {
 
 .login-button {
     border-radius: 30px;
-    width: 220px;
+    width: 50%;
     height: 50px;
     margin-top: 36px;
     background-color: #0085FF;
@@ -40,4 +64,13 @@ button {
 .login-link {
     margin-top: 51px;
     text-align: center;
+}
+
+@media (max-width: 750px) {
+    .login-form-container {
+        width: 100%;
+        margin: 10px;
+        z-index: 1;
+    }
+
 }
