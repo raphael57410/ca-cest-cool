@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div v-if="!$store.state.isConnected" class="login-container">
     <loader-component v-if="$store.state.loader"></loader-component>
     <form
       v-else

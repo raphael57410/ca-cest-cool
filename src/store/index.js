@@ -10,9 +10,9 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         loader: false,
-        isConnected: false,
+        isConnected: localStorage.getItem('isConnected') ? localStorage.getItem('isConnected') : false,
         loginMessage: "",
-        currentUser: [],
+        currentUser: localStorage.getItem('USER') ? JSON.parse(localStorage.getItem('USER')) : [],
     },
     getters: {
     },
@@ -28,6 +28,7 @@ const store = new Vuex.Store({
                 if (response.status === 200) {
                     state.isConnected = true
                     state.loader = false;
+                    localStorage.setItem('isConnected', state.isConnected)
                     router.push('/profil');
                 }
                 else if (response.status === 404) state.loginMessage = response.data.message;
