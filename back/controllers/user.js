@@ -15,11 +15,11 @@ exports.createUser = async (req, res) => {
 
 // Find User
 exports.user = async (req, res) => {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     try {
 
-        const user = await userServices.findUser(email, password);
+        const user = await userServices.findUser(email);
 
         const token = jwt.sign({
             id: user[0]._id,

@@ -8,7 +8,7 @@ const userSchema = new Schema({
     password: { type: String, minlength: 5 },
     profilPicture: { type: String },
     bio: { type: String, minlength: 3, maxlength: 280 },
-    posts: [{ type: Schema.Types.ObjectId, ref: Post }],
+    posts: [{ type: Array, ref: Post }],
     userCreated: { type: Date, default: Date.now },
 },
     { timestamp: true }

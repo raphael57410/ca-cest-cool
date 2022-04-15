@@ -13,3 +13,19 @@ exports.createPost = async (data) => {
 
     console.log('je crée un nouveau post');
 }
+
+//TODO voir si cette route est utile!
+// Get all Post
+exports.allPost = async (userId) => {
+
+    const allPost = await Post.find({ user: userId });
+
+    return allPost;
+}
+
+exports.deletePost = async (postId) => {
+
+    const allPost = await Post.findOneAndDelete({ _id: postId });
+
+    return allPost;
+}
