@@ -3,7 +3,8 @@
     class="input"
     :type="type"
     :placeholder="placeholder"
-    :v-model="value"
+    :value="value"
+    @input="updateSelf($event.target.value)"
   />
 </template>
 
@@ -16,6 +17,11 @@ export default {
     type: String,
     placeholder: String,
     value: String,
+  },
+  methods: {
+    updateSelf(value) {
+      this.$emit("input", value);
+    },
   },
 };
 </script>

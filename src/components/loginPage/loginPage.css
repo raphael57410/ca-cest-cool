@@ -43,6 +43,14 @@
     flex-direction: column;
     width: 30%;
     justify-content: space-around;
+    z-index: 111;
+}
+
+.login-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 button {
@@ -59,6 +67,11 @@ button {
     height: 50px;
     margin-top: 36px;
     background-color: #0085FF;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .login-link {
