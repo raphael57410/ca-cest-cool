@@ -12,6 +12,13 @@
     transform: scale(1.05);
 }
 
+.postCard-container:hover::after {
+    content: ">";
+    position: absolute;
+    right: -25px;
+    bottom: 50%;
+}
+
 .postCard-img-container {
     display: flex;
     align-items: center;
@@ -27,12 +34,16 @@
 }
 
 .postCard-section-container {
-    width: 100%;
+    width: 80%
 }
 
 .postCard-section-title {}
 
-.postCard-section-text {}
+.postCard-section-text {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .postCard-social-container {
     display: flex;

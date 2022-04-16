@@ -1,5 +1,5 @@
 <template>
-  <div class="postCard-container">
+  <div class="postCard-container" @click="clickEvent">
     <div class="postCard-img-container">
       <img
         class="postCard-img"
@@ -36,6 +36,9 @@ export default {
   },
   methods: {
     ...mapActions(["deletePost"]),
+    clickEvent() {
+      this.$emit("showPost");
+    },
   },
   name: "PostCard",
 };

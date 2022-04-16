@@ -1,4 +1,6 @@
 import axios from "axios";
+import store from '@/store';
+
 
 export const loginRequest = async (email, password) => {
     return await axios.post("http://localhost:3000/api/cacestcool/users/login", { body: { email, password } })
@@ -14,10 +16,11 @@ export const loginRequest = async (email, password) => {
 
 export const fetchAllPostRequest = async (storeDispatch) => {
     const TOKEN = localStorage.getItem('TOKEN');
-
+    store.state.loader = true;
     axios.get("http://localhost:3000/api/cacestcool/post/all", { headers: { Authorization: `Bearer ${TOKEN}` } })
         .then((response) => {
             storeDispatch("allPost", response.data.reverse());
+            store.state.loader = false;
         })
         .catch((error) => {
             console.log("Error fetch", error);
