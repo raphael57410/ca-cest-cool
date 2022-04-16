@@ -2,7 +2,8 @@ import Vue from "vue"
 import Vuex from "vuex"
 import {
     loginRequest,
-    addPostRequest
+    addPostRequest,
+    deletePostRequest
 } from '@/requests';
 import router from '@/router';
 
@@ -43,9 +44,17 @@ const store = new Vuex.Store({
         async addPost(state, { titre, description }) {
 
             state.loader = true;
-            console.log('add Post' + titre, description);
             const response = await addPostRequest(titre, description);
+            if (response.status === 201) {
+                state.loader = false;
+                router.push('/profil');
+            }
             console.log(response);
+        },
+        // delete post
+        deletePost(state, postId) {
+            state.allPost.splice(state.allPost.findIndex(post => post._id === postId), 1);
+            deletePostRequest(postId);
         },
     },
     actions: {
@@ -59,6 +68,9 @@ const store = new Vuex.Store({
 
         addPost({ commit }, { titre, description }) {
             commit("addPost", { titre, description });
+        },
+        deletePost({ commit }, postId) {
+            commit("deletePost", postId);
         },
     },
 });

@@ -26,7 +26,7 @@ exports.allPost = async (req, res) => {
 // Delete post by id
 exports.deletePost = async (req, res) => {
     try {
-        const allPost = await postServices.deletePost(req.body.body);
+        const allPost = await postServices.deletePost(req.params.id);
 
         res.status(200).send('post supprimé: ' + allPost);
     } catch (error) {

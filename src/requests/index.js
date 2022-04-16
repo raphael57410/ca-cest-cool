@@ -34,3 +34,16 @@ export const addPostRequest = async (title, description) => {
             return error.response;
         });
 }
+
+export const deletePostRequest = (postId) => {
+    const TOKEN = localStorage.getItem('TOKEN');
+
+    axios.delete(`http://localhost:3000/api/cacestcool/post/delete/${postId}`, { headers: { Authorization: `Bearer ${TOKEN}` } })
+        .then((response) => {
+            console.log(response);
+            return response.data;
+        })
+        .catch((error) => {
+            console.log("Error fetch", error);
+        });
+}

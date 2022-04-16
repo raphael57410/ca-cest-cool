@@ -1,12 +1,12 @@
 <template>
   <div class="postForm-container">
+    <loader-component v-if="$store.state.loader"></loader-component>
     <form
       v-on:submit.prevent="
         () => {
           addPost({ titre, description });
           titre = '';
           description = '';
-          $router.push('./profil');
         }
       "
       class="postForm"
@@ -27,6 +27,7 @@
         type="submit"
       ></button-component>
     </form>
+    <a href="/profil">Retour</a>
   </div>
 </template>
 
@@ -34,6 +35,8 @@
 import "./postFormPage.css";
 import InputComponent from "@/components/input/Input";
 import ButtonComponent from "@/components/button/Button";
+import LoaderComponent from "@/components/loader/Loader";
+
 import { mapActions } from "vuex";
 
 export default {
@@ -46,6 +49,7 @@ export default {
   components: {
     "input-component": InputComponent,
     "button-component": ButtonComponent,
+    "loader-component": LoaderComponent,
   },
   methods: {
     ...mapActions(["addPost"]),
