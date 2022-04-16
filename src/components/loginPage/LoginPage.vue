@@ -45,6 +45,7 @@
 import "./loginPage.css";
 import InputComponent from "@/components/input/Input";
 import LoaderComponent from "@/components/loader/Loader";
+
 import { mapActions } from "vuex";
 
 export default {

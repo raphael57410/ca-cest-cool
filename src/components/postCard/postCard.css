@@ -1,0 +1,44 @@
+.postCard-container {
+    display: flex;
+    height: 130px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 40px;
+}
+
+.postCard-container:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.postCard-img-container {
+    display: flex;
+    align-items: center;
+    padding: 33px;
+}
+
+.postCard-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: green;
+
+}
+
+.postCard-section-container {
+    width: 100%;
+}
+
+.postCard-section-title {}
+
+.postCard-section-text {}
+
+.postCard-social-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.postCard-like-container {
+    margin-right: 10px;
+}
