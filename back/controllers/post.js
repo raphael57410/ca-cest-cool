@@ -15,7 +15,7 @@ exports.createPost = async (req, res) => {
 // Get all post
 exports.allPost = async (req, res) => {
     try {
-        const allPost = await postServices.allPost(req.body.body);
+        const allPost = await postServices.allPost();
 
         res.status(200).send(allPost);
     } catch (error) {

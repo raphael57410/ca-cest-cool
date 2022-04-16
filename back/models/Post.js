@@ -5,6 +5,7 @@ const Coment = require('../models/Coment');
 const postSchema = Schema({
     user: [{ type: Object, ref: User }],
     coment: [{ type: Array, ref: Coment }],
+    title: { type: String },
     description: { type: String },
     image: { type: String },
     like: { type: String },

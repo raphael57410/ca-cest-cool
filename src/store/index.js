@@ -2,6 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import {
     loginRequest,
+    addPostRequest
 } from '@/requests';
 import router from '@/router';
 
@@ -9,6 +10,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
+        allPost: [],
         loader: false,
         isConnected: localStorage.getItem('isConnected') ? localStorage.getItem('isConnected') : false,
         loginMessage: "",
@@ -17,6 +19,10 @@ const store = new Vuex.Store({
     getters: {
     },
     mutations: {
+        // all Post
+        initData(state, post) {
+            state.allPost = post;
+        },
         // login
         async login(state, { email, password, }) {
 
@@ -33,10 +39,26 @@ const store = new Vuex.Store({
                 }
                 else if (response.status === 404) state.loginMessage = response.data.message;
         },
+        // add Post
+        async addPost(state, { titre, description }) {
+
+            state.loader = true;
+            console.log('add Post' + titre, description);
+            const response = await addPostRequest(titre, description);
+            console.log(response);
+        },
     },
     actions: {
+        allPost({ commit }, initialTodos) {
+            commit("initData", initialTodos ? initialTodos : []);
+        },
+
         login({ commit }, { email, password }) {
             commit("login", { email, password });
+        },
+
+        addPost({ commit }, { titre, description }) {
+            commit("addPost", { titre, description });
         },
     },
 });

@@ -8,8 +8,8 @@
       />
     </div>
     <div class="postCard-section-container">
-      <h2 class="postCard-section-title">nom prenom</h2>
-      <p class="postCard-section-text">ici le texte du post</p>
+      <h2 class="postCard-section-title">{{ post.title }}</h2>
+      <p class="postCard-section-text">{{ post.description }}</p>
       <div class="postCard-social-container">
         <div>coment</div>
         <div class="postCard-like-container">logo de like</div>
@@ -22,6 +22,9 @@
 import "./postCard.css";
 
 export default {
+  props: {
+    post: Object,
+  },
   name: "PostCard",
 };
 </script>

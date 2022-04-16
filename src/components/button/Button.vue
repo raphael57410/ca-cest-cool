@@ -1,5 +1,5 @@
 <template>
-  <button @click="clickFunc" class="button">{{ name }}</button>
+  <button @click="clickFunc" :type="type" class="button">{{ name }}</button>
 </template>
 
 <script>
@@ -8,6 +8,7 @@ export default {
   name: "ButtonComponent",
   props: {
     name: String,
+    type: String,
   },
   methods: {
     clickFunc() {

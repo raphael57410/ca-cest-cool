@@ -1,0 +1,20 @@
+.postForm-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.postForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding: 20px;
+    width: 50%;
+    background: white;
+}
+
+.postForm-button {
+    margin-top: 10px;
+}

@@ -5,20 +5,19 @@ exports.createPost = async (data) => {
     const { user, description, image, like } = data;
     const newPost = new Post();
 
-    newPost.user = user;
-    newPost.description = description;
-    newPost.image = image;
-    newPost.like = like;
+    newPost.user = data.currentUser;
+    newPost.title = data.title;
+    newPost.description = data.description;
+    // TODO: ajouter les images dans le formulaire d'ajout
+    newPost.image = 'pas encore fonctionelle';
+    newPost.like = 0;
     newPost.save();
-
-    console.log('je crée un nouveau post');
 }
 
-//TODO voir si cette route est utile!
 // Get all Post
-exports.allPost = async (userId) => {
+exports.allPost = async () => {
 
-    const allPost = await Post.find({ user: userId });
+    const allPost = await Post.find();
 
     return allPost;
 }
