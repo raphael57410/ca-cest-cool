@@ -11,8 +11,6 @@ exports.findUser = async (email) => {
     // find all post by email for the current user
     const findAllPost = await Post.find({ 'user.email': findUser[0].email });
 
-    //TODO find all coment for the post
-
     findUser[0].posts = findAllPost;
 
     if (findUser) return findUser;

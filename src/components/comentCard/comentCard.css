@@ -1,0 +1,31 @@
+.comentCard-container {
+    display: flex;
+    border-radius: 30px;
+    background-color: #DEDEDE;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 40px;
+}
+
+.comentCard-img-container {
+    display: flex;
+    align-items: center;
+    padding: 33px;
+}
+
+.comentCard-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: green;
+
+}
+
+.comentCard-section-container {
+    width: 80%
+}
+
+.comentCard-section-title {}
+
+.comentCard-section-text {
+    word-break: break-all;
+}

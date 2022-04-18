@@ -2,14 +2,13 @@ const Coment = require("../models/Coment");
 
 // create new Coment
 exports.createComent = async (data) => {
-    const { post, user, coment, like } = data;
+    const { postId, currentUser, coment } = data;
     const newComent = new Coment();
 
-    newComent.user = user;
-    newComent.post = post;
+    // TODO: vérifier que le commentaire n'est pas vide!
+    newComent.user = currentUser;
+    newComent.post = postId;
     newComent.coment = coment;
-    newComent.like = like;
+    newComent.like = [];
     newComent.save();
-
-    console.log('je crée un nouveau commentaire');
 }

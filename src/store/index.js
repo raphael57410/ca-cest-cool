@@ -3,7 +3,8 @@ import Vuex from "vuex"
 import {
     loginRequest,
     addPostRequest,
-    deletePostRequest
+    deletePostRequest,
+    addComentRequest
 } from '@/requests';
 import router from '@/router';
 
@@ -49,21 +50,30 @@ const store = new Vuex.Store({
                 state.loader = false;
                 router.push('/profil');
             }
-            console.log(response);
         },
         // delete post
         deletePost(state, postId) {
             state.allPost.splice(state.allPost.findIndex(post => post._id === postId), 1);
             deletePostRequest(postId);
         },
+
+        // add Coment
+        async addComent(state, { coment, postId }) {
+            const currentUser = state.currentUser;
+            const response = await addComentRequest(coment, currentUser, postId);
+            console.log(response);
+        },
     },
     actions: {
-        allPost({ commit }, initialTodos) {
-            commit("initData", initialTodos ? initialTodos : []);
-        },
-
+        // ### LOGIN ###
         login({ commit }, { email, password }) {
             commit("login", { email, password });
+        },
+        // ### END LOGIN ###
+
+        // ### POST ###
+        allPost({ commit }, initialTodos) {
+            commit("initData", initialTodos ? initialTodos : []);
         },
 
         addPost({ commit }, { titre, description }) {
@@ -72,6 +82,14 @@ const store = new Vuex.Store({
         deletePost({ commit }, postId) {
             commit("deletePost", postId);
         },
+        // ### END POST ###
+
+        // ### COMENT ###
+        addComent({ commit }, { coment, postId }) {
+            commit("addComent", { coment, postId });
+        },
+
+        // ### END COMENT ###
     },
 });
 

@@ -1,4 +1,6 @@
 const Post = require("../models/Post");
+const Coment = require("../models/Coment");
+
 
 // create new Post
 exports.createPost = async (data) => {
@@ -18,6 +20,15 @@ exports.createPost = async (data) => {
 exports.allPost = async () => {
 
     const allPost = await Post.find();
+
+
+    // find all coment for one post 
+    await Promise.all(allPost.map(async (post) => {
+        const allComent = await Coment.find({ 'post': post._id });
+        post.coment = allComent;
+
+        return post
+    }))
 
     return allPost;
 }

@@ -4,9 +4,9 @@ const User = require('../models/User');
 
 const comentSchema = Schema({
     post: [{ type: Schema.Types.ObjectId, ref: Post }],
-    user: [{ type: Schema.Types.ObjectId, ref: User }],
+    user: [{ type: Array, ref: User }],
     coment: { type: String },
-    like: { type: String },
+    like: [{ type: Schema.Types.ObjectId, ref: User }],
     comentCreated: { type: Date, default: Date.now },
 }
 );

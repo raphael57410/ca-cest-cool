@@ -50,3 +50,13 @@ export const deletePostRequest = (postId) => {
             console.log("Error fetch", error);
         });
 }
+
+export const addComentRequest = async (coment, currentUser, postId) => {
+    return await axios.post("http://localhost:3000/api/cacestcool/coment/add", { body: { coment, currentUser, postId } })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            return error.response;
+        });
+}
