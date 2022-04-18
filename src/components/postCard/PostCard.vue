@@ -19,8 +19,14 @@
           @click="deletePost(post._id)"
           >Supprimer</span
         >
-        <div>coment</div>
-        <div class="postCard-like-container">logo de like</div>
+        <div class="postCard-coment-container">
+          {{ post.coment.length }}
+          <font-awesome-icon icon="fa-regular fa-comment" />
+        </div>
+        <div class="postCard-like-container">
+          {{ post.like }}
+          <font-awesome-icon icon="fa-regular fa-thumbs-up" />
+        </div>
       </div>
     </div>
   </div>

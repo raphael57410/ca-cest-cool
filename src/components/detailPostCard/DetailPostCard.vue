@@ -9,8 +9,10 @@
     </div>
     <div class="detailPostCard-title-container">
       <h1>{{ post.title }}</h1>
-      <span>name of author</span>
-      <span>number of like</span>
+      <span
+        >par {{ post.user[0].firstname + " " + post.user[0].lastname }}</span
+      >
+      <span>{{ post.like }} likes</span>
     </div>
     <div class="detailPostCard-img-container">
       <img
