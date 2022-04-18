@@ -19,6 +19,17 @@ const store = new Vuex.Store({
         currentUser: localStorage.getItem('USER') ? JSON.parse(localStorage.getItem('USER')) : [],
     },
     getters: {
+        isConnected(state) {
+            return state.isConnected;
+        },
+
+        allPost(state) {
+            return state.allPost;
+        },
+        currentUser(state) {
+
+            return state.currentUser;
+        }
     },
     mutations: {
         // all Post
@@ -36,6 +47,7 @@ const store = new Vuex.Store({
                 if (response.status === 200) {
                     state.isConnected = true
                     state.loader = false;
+                    state.currentUser = response.data.user;
                     localStorage.setItem('isConnected', state.isConnected)
                     router.push('/profil');
                 }

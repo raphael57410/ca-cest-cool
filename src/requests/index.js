@@ -14,12 +14,13 @@ export const loginRequest = async (email, password) => {
         });
 }
 
-export const fetchAllPostRequest = async (storeDispatch) => {
+export const fetchAllPostRequest = async () => {
     const TOKEN = localStorage.getItem('TOKEN');
     store.state.loader = true;
     axios.get("http://localhost:3000/api/cacestcool/post/all", { headers: { Authorization: `Bearer ${TOKEN}` } })
         .then((response) => {
-            storeDispatch("allPost", response.data.reverse());
+            store.state.allPost = response.data.reverse();
+            // storeDispatch("allPost", response.data.reverse())
             store.state.loader = false;
         })
         .catch((error) => {

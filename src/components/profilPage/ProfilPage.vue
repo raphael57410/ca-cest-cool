@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$store.state.isConnected" class="profil-container">
+  <div v-if="$store.getters.isConnected" class="profil-container">
     <side-bar />
     <main class="main-profil-container">
       <loader-component v-if="$store.state.loader"></loader-component>
@@ -12,7 +12,7 @@
         ></button-component>
         <post-card
           @showPost="showPostfunc(post)"
-          v-for="post in $store.state.allPost"
+          v-for="post in $store.getters.allPost"
           :post="post"
           :key="post._id"
         />
@@ -40,8 +40,7 @@ export default {
     };
   },
   created() {
-    if (this.$store.state.isConnected)
-      fetchAllPostRequest(this.$store.dispatch);
+    if (this.$store.state.isConnected) fetchAllPostRequest();
   },
   components: {
     "side-bar": SideBarProfil,

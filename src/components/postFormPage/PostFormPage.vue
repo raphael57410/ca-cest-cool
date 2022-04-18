@@ -16,11 +16,12 @@
         type="text"
         placeholder="Titre du post"
       ></input-component>
-      <input-component
+      <textarea
+        class="input"
         v-model="description"
         type="text"
         placeholder="description du post"
-      ></input-component>
+      ></textarea>
       <button-component
         class="postForm-button"
         name="Publier"
