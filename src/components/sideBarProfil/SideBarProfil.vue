@@ -29,7 +29,7 @@
       </div>
       <div class="sideBar-link">
         <div class="link" @click="filterPost">Mes Post</div>
-        <div class="sideBar-link-number">3</div>
+        <div class="sideBar-link-number">0</div>
       </div>
       <div class="sideBar-link">
         <a class="link" href="#">Mon compte</a>

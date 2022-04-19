@@ -1,5 +1,11 @@
 <template>
-  <div class="comentCard-container">
+  <div
+    class="comentCard-container"
+    :class="{
+      'comentCard-container user':
+        coment.user[0][0]._id === $store.state.currentUser._id,
+    }"
+  >
     <div class="comentCard-img-container">
       <img
         class="comentCard-img"
