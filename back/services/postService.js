@@ -12,7 +12,7 @@ exports.createPost = async (data) => {
     newPost.description = data.description;
     // TODO: ajouter les images dans le formulaire d'ajout
     newPost.image = 'pas encore fonctionelle';
-    newPost.like = 0;
+    newPost.like = false;
     newPost.save();
 }
 

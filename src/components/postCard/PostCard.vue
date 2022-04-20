@@ -24,8 +24,16 @@
           <font-awesome-icon icon="fa-regular fa-comment" />
         </div>
         <div class="postCard-like-container">
-          {{ post.like }}
-          <font-awesome-icon icon="fa-regular fa-thumbs-up" />
+          <font-awesome-icon
+            @click="likePost(post)"
+            v-if="!post.like"
+            icon="fa-regular fa-thumbs-up"
+          />
+          <font-awesome-icon
+            @click="likePost(post)"
+            v-else-if="post.like"
+            icon="fa-solid fa-thumbs-up"
+          />
         </div>
       </div>
     </div>
@@ -44,6 +52,9 @@ export default {
     ...mapActions(["deletePost"]),
     clickEvent() {
       this.$emit("showPost");
+    },
+    likePost(post) {
+      post.like = !post.like;
     },
   },
   name: "PostCard",

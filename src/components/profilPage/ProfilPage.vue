@@ -18,7 +18,7 @@
         />
       </div>
     </main>
-    <detail-post-card v-if="showPost" :post="currenPost"></detail-post-card>
+    <detail-post-card v-if="showPost" :post="currentPost"></detail-post-card>
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
         .join("-");
       currentPost.postCreated = date;
 
-      this.currenPost = currentPost;
+      this.currentPost = currentPost;
     },
   },
 };

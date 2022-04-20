@@ -8,7 +8,7 @@ const postSchema = Schema({
     title: { type: String },
     description: { type: String },
     image: { type: String },
-    like: { type: String },
+    like: { type: Boolean },
     postCreated: { type: Date, default: Date.now },
 }
 );
