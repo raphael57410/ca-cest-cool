@@ -10,4 +10,5 @@ import "./app.css";
 export default {
   name: "App",
 };
+//! function init à ajouter
 </script>

@@ -16,7 +16,7 @@ const store = new Vuex.Store({
         loader: false,
         isConnected: localStorage.getItem('isConnected') ? localStorage.getItem('isConnected') : false,
         loginMessage: "",
-        currentUser: localStorage.getItem('USER') ? JSON.parse(localStorage.getItem('USER')) : [],
+        currentUser: [],
     },
     getters: {
         isConnected(state) {
@@ -27,7 +27,6 @@ const store = new Vuex.Store({
             return state.allPost;
         },
         currentUser(state) {
-
             return state.currentUser;
         }
     },
@@ -35,6 +34,10 @@ const store = new Vuex.Store({
         // all Post
         initData(state, post) {
             state.allPost = post;
+        },
+        // init currentUser
+        initCurrentUser(state) {
+            state.currentUser = JSON.parse(localStorage.getItem('USER'));
         },
         // login
         async login(state, { email, password, }) {
@@ -60,7 +63,6 @@ const store = new Vuex.Store({
             const response = await addPostRequest(titre, description);
             if (response.status === 201) {
                 state.loader = false;
-                router.push('/profil');
             }
         },
         // delete post
@@ -100,8 +102,11 @@ const store = new Vuex.Store({
         addComent({ commit }, { coment, postId }) {
             commit("addComent", { coment, postId });
         },
-
         // ### END COMENT ###
+
+        initCurrentUser({ commit }) {
+            commit("initCurrentUser");
+        },
     },
 });
 
