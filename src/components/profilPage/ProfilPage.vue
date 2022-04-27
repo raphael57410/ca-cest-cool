@@ -31,7 +31,6 @@ import LoaderComponent from "@/components/loader/Loader";
 import DetailPostCard from "@/components/detailPostCard/DetailPostCard";
 
 import { fetchAllPostRequest } from "@/requests";
-import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -42,7 +41,6 @@ export default {
   },
   created() {
     if (this.$store.state.isConnected) fetchAllPostRequest();
-    this.initCurrentUser();
   },
   components: {
     "side-bar": SideBarProfil,
@@ -52,8 +50,6 @@ export default {
     "detail-post-card": DetailPostCard,
   },
   methods: {
-    ...mapActions(["initCurrentUser"]),
-
     showPostfunc(currentPost) {
       this.showPost = !this.showPost;
       // format date

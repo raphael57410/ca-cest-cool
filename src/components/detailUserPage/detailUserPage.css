@@ -1,0 +1,15 @@
+.detailUser-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.detailUser-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-width: 50%;
+    border: 1px solid black;
+}

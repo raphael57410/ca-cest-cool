@@ -30,3 +30,17 @@ exports.createUser = async (lastname, firstname, email, password, profilPicture,
     newUser.bio = bio;
     newUser.save();
 }
+
+// create new User
+exports.updateUser = async (newUser) => {
+    const userUpdate = await User.findOneAndUpdate({ _id: newUser._id }, newUser, { new: true });
+    return userUpdate
+}
+
+//TODO: voir si besoin de se service
+// // get current User
+// exports.getCurrentUser = async (userId) => {
+//     const user = await User.findById({ _id: userId });
+
+//     return user
+// }

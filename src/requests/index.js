@@ -61,3 +61,15 @@ export const addComentRequest = async (coment, currentUser, postId) => {
             return error.response;
         });
 }
+
+export const updateUserRequest = async (newUser) => {
+    return await axios.patch("http://localhost:3000/api/cacestcool/users/update", { body: newUser })
+        .then((response) => {
+            localStorage.setItem('USER', JSON.stringify(response.data.userUpdated));
+
+            return response;
+        })
+        .catch((error) => {
+            return error.response;
+        });
+}

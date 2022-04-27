@@ -2,6 +2,7 @@ import VueRouter from "vue-router";
 import LoginPage from "../components/loginPage/LoginPage"
 import ProfilPage from "../components/profilPage/ProfilPage"
 import postFormPage from "../components/postFormPage/PostFormPage"
+import detailUserPage from "../components/detailUserPage/DetailUserPage"
 import PageNotFound from "../components/PageNotFound"
 import store from '@/store'
 
@@ -12,6 +13,7 @@ const routes = [
             requiresAuth: true
         }
     },
+    { path: "/detail", component: detailUserPage },
     { path: "/formulaire", component: postFormPage },
     { path: "*", component: PageNotFound },
 ];

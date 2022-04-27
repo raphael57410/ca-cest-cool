@@ -15,8 +15,8 @@
       />
     </div>
     <h2 class="sideBar-name">
-      {{ $store.state.currentUser.firstname }}
-      {{ $store.state.currentUser.lastname }}
+      {{ firstname }}
+      {{ lastname }}
     </h2>
     <div class="sideBar-link-container">
       <div class="sideBar-link">
@@ -32,7 +32,7 @@
         <div class="sideBar-link-number">0</div>
       </div>
       <div class="sideBar-link">
-        <a class="link" href="#">Mon compte</a>
+        <a class="link" href="detail">Mon compte</a>
       </div>
     </div>
     <button-component
@@ -77,6 +77,15 @@ export default {
       fetchAllPostRequest();
     },
   },
-  created() {},
+  created() {
+    //TODO: voir pour améliorer
+    if (this.$store.getters.currentUser.length > 0) {
+      this.firstname = this.$store.getters.currentUser[0].firstname;
+      this.lastname = this.$store.getters.currentUser[0].lastname;
+    } else {
+      this.firstname = this.$store.getters.currentUser.firstname;
+      this.lastname = this.$store.getters.currentUser.lastname;
+    }
+  },
 };
 </script>

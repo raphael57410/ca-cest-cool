@@ -6,9 +6,16 @@
 
 <script>
 import "./app.css";
+import { mapActions } from "vuex";
 
 export default {
   name: "App",
+  created() {
+    this.initCurrentUser();
+    console.log("App", this.$store.getters.currentUser);
+  },
+  methods: {
+    ...mapActions(["initCurrentUser"]),
+  },
 };
-//! function init à ajouter
 </script>

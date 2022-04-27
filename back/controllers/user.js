@@ -13,6 +13,27 @@ exports.createUser = async (req, res) => {
     }
 }
 
+// Create User
+exports.updateUser = async (req, res) => {
+    try {
+        const userUpdated = await userServices.updateUser(req.body.body);
+        res.status(200).send({ userUpdated });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//TODO: voir si besoin de se controller
+// //get current user
+// exports.getCurrentUser = async (req, res) => {
+//     try {
+//         const user = await userServices.getCurrentUser(req.params.id);
+//         res.status(200).send({ user });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
 // Find User
 exports.user = async (req, res) => {
     const { email } = req.body.body;

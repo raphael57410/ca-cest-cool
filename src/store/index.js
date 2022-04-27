@@ -4,7 +4,8 @@ import {
     loginRequest,
     addPostRequest,
     deletePostRequest,
-    addComentRequest
+    addComentRequest,
+    updateUserRequest,
 } from '@/requests';
 import router from '@/router';
 
@@ -77,6 +78,12 @@ const store = new Vuex.Store({
             const response = await addComentRequest(coment, currentUser, postId);
             console.log(response);
         },
+
+        // update User
+        async updateUser(state, newUser) {
+            const userUpdated = await updateUserRequest(newUser);
+            state.currentUser = userUpdated
+        },
     },
     actions: {
         // ### LOGIN ###
@@ -84,6 +91,13 @@ const store = new Vuex.Store({
             commit("login", { email, password });
         },
         // ### END LOGIN ###
+
+        // ### USER ###
+        updateUser({ commit }, newUser) {
+            commit("updateUser", newUser);
+            commit('initCurrentUser');
+        },
+        // ### END USER ###
 
         // ### POST ###
         allPost({ commit }, initialTodos) {
@@ -93,6 +107,7 @@ const store = new Vuex.Store({
         addPost({ commit }, { titre, description }) {
             commit("addPost", { titre, description });
         },
+
         deletePost({ commit }, postId) {
             commit("deletePost", postId);
         },
