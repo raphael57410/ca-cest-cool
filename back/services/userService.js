@@ -37,6 +37,13 @@ exports.updateUser = async (newUser) => {
     return userUpdate
 }
 
+// create new User
+exports.updatePassword = async (userId, newPassword) => {
+    const passHash = await bcrypt.hashSync(newPassword, saltRounds)
+    const userUpdate = await User.findOneAndUpdate({ _id: userId }, { password: passHash }, { new: true });
+    return userUpdate
+}
+
 //TODO: voir si besoin de se service
 // // get current User
 // exports.getCurrentUser = async (userId) => {

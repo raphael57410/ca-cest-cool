@@ -4,6 +4,7 @@
     :type="type"
     :placeholder="placeholder"
     :value="value"
+    :required="required ? true : false"
     @input="updateSelf($event.target.value)"
   />
 </template>
@@ -17,6 +18,7 @@ export default {
     type: String,
     placeholder: String,
     value: String,
+    required: Boolean,
   },
   methods: {
     updateSelf(value) {

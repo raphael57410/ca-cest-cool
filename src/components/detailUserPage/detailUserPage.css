@@ -13,3 +13,11 @@
     min-width: 50%;
     border: 1px solid black;
 }
+
+.detailUser-input-red {
+    border: 1px solid red;
+}
+
+.detailUser-input-red:focus {
+    border: 1px solid red;
+}

@@ -6,6 +6,7 @@ import {
     deletePostRequest,
     addComentRequest,
     updateUserRequest,
+    changePasswordRequest
 } from '@/requests';
 import router from '@/router';
 
@@ -17,6 +18,7 @@ const store = new Vuex.Store({
         loader: false,
         isConnected: localStorage.getItem('isConnected') ? localStorage.getItem('isConnected') : false,
         loginMessage: "",
+        message: "",
         currentUser: [],
     },
     getters: {
@@ -84,6 +86,19 @@ const store = new Vuex.Store({
             const userUpdated = await updateUserRequest(newUser);
             state.currentUser = userUpdated
         },
+
+        // change password
+        async changePassWord(state, { user, oldPassword, newPassword, comfirmPassword }) {
+            console.log(state);
+            const response = await changePasswordRequest(user, oldPassword, newPassword, comfirmPassword);
+            console.log(response);
+            if (response.status === 200) state.message = response.data
+            if (response.status === 404) state.message = response.data
+
+            setTimeout(() => {
+                state.message = '';
+            }, 2000);
+        },
     },
     actions: {
         // ### LOGIN ###
@@ -96,6 +111,10 @@ const store = new Vuex.Store({
         updateUser({ commit }, newUser) {
             commit("updateUser", newUser);
             commit('initCurrentUser');
+        },
+
+        changePassWord({ commit }, { user, oldPassword, newPassword, comfirmPassword }) {
+            commit("changePassWord", { user, oldPassword, newPassword, comfirmPassword });
         },
         // ### END USER ###
 

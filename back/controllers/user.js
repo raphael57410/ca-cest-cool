@@ -23,6 +23,19 @@ exports.updateUser = async (req, res) => {
     }
 }
 
+// Update password
+exports.updatePassword = async (req, res) => {
+    const userId = req.body.body.user._id;
+    const newPassword = req.body.body.newPassword;
+
+    try {
+        const user = await userServices.updatePassword(userId, newPassword);
+        if (user) res.status(200).send('Votre mot de passe a été changé');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 //TODO: voir si besoin de se controller
 // //get current user
 // exports.getCurrentUser = async (req, res) => {

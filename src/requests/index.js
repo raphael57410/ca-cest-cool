@@ -73,3 +73,13 @@ export const updateUserRequest = async (newUser) => {
             return error.response;
         });
 }
+
+export const changePasswordRequest = async (user, oldPassword, newPassword, comfirmPassword) => {
+    return await axios.patch("http://localhost:3000/api/cacestcool/users/password", { body: { user, oldPassword, newPassword, comfirmPassword } })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            return error.response;
+        });
+}

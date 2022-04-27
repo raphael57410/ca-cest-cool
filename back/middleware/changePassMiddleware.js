@@ -2,8 +2,9 @@ const User = require('../models/User');
 const bcrypt = require("bcrypt");
 
 // middleware for check the password
-const loginMiddleware = async (req, res, next) => {
-    const { email, password } = req.body.body;
+const changePassMiddleware = async (req, res, next) => {
+    const { email } = req.body.body.user;
+    const password = req.body.body.oldPassword;
 
     // find the user with email
     const findUser = await User.find({ email: email });
@@ -13,7 +14,8 @@ const loginMiddleware = async (req, res, next) => {
 
         // compare the password
         if (passCompare) next();
-        else res.status(404).send({ message: "erreur dans l'email ou le mot de passe!" })
-    } else res.status(404).send({ message: "Cet email n'est pas enregistré dans notre base de données" })
+        else res.status(404).send("Vous avez entrez le mauvais mot de passe");
+    } else res.status(404).send("Cet email n'est pas enregistré dans notre base de données");
+
 }
-module.exports = loginMiddleware;
+module.exports = changePassMiddleware;
