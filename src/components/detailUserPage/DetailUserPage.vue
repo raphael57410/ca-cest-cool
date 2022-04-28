@@ -1,6 +1,7 @@
 <template>
   <div class="detailUser-container">
     <form
+      enctype="multipart/form-data"
       action=""
       class="detailUser-form"
       v-on:submit.prevent="
@@ -9,6 +10,8 @@
         }
       "
     >
+      <img src="../../assets/avatar.png" alt="avatar" />
+      <input type="file" />
       <input-component
         type="text"
         v-model="user.email"

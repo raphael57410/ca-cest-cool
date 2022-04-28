@@ -21,3 +21,7 @@
 .detailUser-input-red:focus {
     border: 1px solid red;
 }
+
+img {
+    width: 20%;
+}

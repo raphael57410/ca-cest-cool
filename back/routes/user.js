@@ -1,4 +1,6 @@
 const express = require('express');
+const multer = require('./middleware/multerConfig');
+
 
 const router = express.Router();
 
@@ -10,9 +12,9 @@ const changePassMiddleware = require('../middleware/changePassMiddleware');
 
 router.post('/login', [loginMiddleware], userCtrl.user);
 
-router.post('/add', userCtrl.createUser);
+router.post('/add', multer, userCtrl.createUser);
 
-router.patch('/update', userCtrl.updateUser);
+router.patch('/update', multer, userCtrl.updateUser);
 
 router.patch('/password', [changePassMiddleware], userCtrl.updatePassword);
 
