@@ -14,6 +14,9 @@
         >par {{ post.user[0].firstname + " " + post.user[0].lastname }}</span
       >
       <span>{{ post.like }} likes</span>
+      <button class="detailPostCard-like-button" @click="likePost(post)">
+        J'aime
+      </button>
     </div>
     <div class="detailPostCard-img-container">
       <img
@@ -84,6 +87,9 @@ export default {
 
     focusInput() {
       this.$refs.email.$el.focus();
+    },
+    likePost(post) {
+      post.like = !post.like;
     },
   },
 };

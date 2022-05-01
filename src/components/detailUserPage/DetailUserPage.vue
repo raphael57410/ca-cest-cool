@@ -22,7 +22,7 @@
         name="images"
         type="file"
         v-model="profilPicture"
-        class="register-input"
+        class="detailUser-input"
       >
       </input-component>
 
@@ -96,6 +96,7 @@
           changePassWord({ user, oldPassword, newPassword, comfirmPassword })
         "
       ></button-component>
+      <a href="/profil">retour</a>
       <span>{{ this.$store.state.message }}</span>
     </form>
   </div>

@@ -9,9 +9,17 @@
     <div class="comentCard-img-container">
       <img
         class="comentCard-img"
-        src="../../assets/logo.png"
+        :src="'images/' + coment.user[0][0].profilPicture"
         alt="cacestcool-logo"
       />
+      <span>{{
+        coment.comentCreated.split("T")[0].split("-").reverse().join("-")
+      }}</span>
+      <span>{{
+        coment.comentCreated.split("T")[1].split(":")[0] +
+        ":" +
+        coment.comentCreated.split("T")[1].split(":")[1]
+      }}</span>
     </div>
     <div class="comentCard-section-container">
       <h2 class="comentCard-section-author">

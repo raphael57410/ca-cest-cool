@@ -1,16 +1,31 @@
 .detailPostCard-container {
-    position: sticky;
     top: 20px;
     width: 50%;
     height: 100%;
     padding: 54px 75px 0 0;
     animation: postAnim 2s;
+    max-height: 100vh;
+    overflow-y: scroll;
 
 }
 
 .detailPostCard-header {
     display: flex;
     justify-content: space-between;
+}
+
+.detailPostCard-like-button {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 30px;
+    width: 20%;
+    background-color: #0085FF;
+}
+
+.detailPostCard-like-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 133, 255, 0.7);
 }
 
 .detailPostCard-date {
@@ -37,7 +52,7 @@
 .detailPostCard-img {
     max-width: 100%;
     max-height: 100%;
-    margin-top: 40px;
+
 }
 
 .detailPostCard-text-container {

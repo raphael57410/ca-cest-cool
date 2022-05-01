@@ -33,7 +33,9 @@
       </div>
       <div class="sideBar-link">
         <div class="link" @click="filterPost">Mes Post</div>
-        <div class="sideBar-link-number">0</div>
+        <div class="sideBar-link-number">
+          {{ $store.getters.currentUser.posts.length }}
+        </div>
       </div>
       <div class="sideBar-link">
         <a class="link" href="/detail">Mon compte</a>
@@ -66,7 +68,6 @@ export default {
     "button-component": ButtonComponent,
   },
   methods: {
-
     deco(router) {
       localStorage.clear();
       this.$store.state.isConnected = false;
