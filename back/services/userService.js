@@ -3,6 +3,7 @@ const Post = require('../models/Post');
 const Coment = require('../models/Coment');
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const fs = require('fs');
 
 // find User
 exports.findUser = async (email) => {
@@ -18,7 +19,7 @@ exports.findUser = async (email) => {
 }
 
 // create new User
-exports.createUser = async (lastname, firstname, email, password, profilPicture, bio) => {
+exports.createUser = async (lastname, firstname, email, password, profilPicturePath, bio) => {
     const newUser = new User();
     const passHash = await bcrypt.hashSync(password, saltRounds);
 
@@ -26,14 +27,23 @@ exports.createUser = async (lastname, firstname, email, password, profilPicture,
     newUser.firstname = firstname;
     newUser.email = email;
     newUser.password = passHash;
-    newUser.profilPicture = profilPicture;
+    newUser.profilPicture = profilPicturePath;
     newUser.bio = bio;
     newUser.save();
 }
 
 // create new User
-exports.updateUser = async (newUser) => {
-    const userUpdate = await User.findOneAndUpdate({ _id: newUser._id }, newUser, { new: true });
+exports.updateUser = async (newUser, userId, fileName) => {
+    const oldImageUser = await User.findById(userId)
+    if (fileName) {
+        fs.unlink(`public/images/${oldImageUser.profilPicture}`, (err) => {
+            if (err) throw err;
+            console.log('image was deleted');
+        });
+    }
+
+    newUser.profilPicture = fileName
+    const userUpdate = await User.findOneAndUpdate({ _id: userId }, newUser, { new: true });
     return userUpdate
 }
 

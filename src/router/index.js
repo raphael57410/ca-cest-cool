@@ -4,6 +4,7 @@ import ProfilPage from "../components/profilPage/ProfilPage"
 import postFormPage from "../components/postFormPage/PostFormPage"
 import detailUserPage from "../components/detailUserPage/DetailUserPage"
 import PageNotFound from "../components/PageNotFound"
+import RegisterPage from "../components/registerPage/RegisterPage"
 import store from '@/store'
 
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
             requiresAuth: true
         }
     },
+    { path: "/inscription", component: RegisterPage },
     { path: "/detail", component: detailUserPage },
     { path: "/formulaire", component: postFormPage },
     { path: "*", component: PageNotFound },

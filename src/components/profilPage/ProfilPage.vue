@@ -35,6 +35,7 @@ import { fetchAllPostRequest } from "@/requests";
 export default {
   data() {
     return {
+      detailUser: false,
       showPost: false,
       currentPost: undefined,
     };

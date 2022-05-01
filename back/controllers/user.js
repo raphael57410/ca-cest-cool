@@ -4,19 +4,22 @@ const jwt = require('jsonwebtoken');
 
 // Create User
 exports.createUser = async (req, res) => {
-    const { lastname, firstname, email, password, profilPicture, bio } = req.body.body;
+    const { lastname, firstname, email, password, bio } = req.body;
+    const { path } = req.file;
+
     try {
-        userServices.createUser(lastname, firstname, email, password, profilPicture, bio);
+        userServices.createUser(lastname, firstname, email, password, path, bio);
         res.status(201).send('le user a été crée!');
     } catch (error) {
         console.log(error);
     }
 }
 
-// Create User
+// update User
 exports.updateUser = async (req, res) => {
+
     try {
-        const userUpdated = await userServices.updateUser(req.body.body);
+        const userUpdated = await userServices.updateUser(req.body, req.params.id, req.file.filename);
         res.status(200).send({ userUpdated });
     } catch (error) {
         console.log(error);

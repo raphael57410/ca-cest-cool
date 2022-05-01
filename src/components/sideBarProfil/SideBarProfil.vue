@@ -9,8 +9,12 @@
     </div>
     <div class="sideBar-picture">
       <img
-        class="login-logo"
-        src="../../assets/logo.png"
+        class="sideBar-picture"
+        :src="
+          $store.getters.currentUser.profilPicture
+            ? 'images/' + $store.getters.currentUser.profilPicture
+            : 'images/avatar.png'
+        "
         alt="cacestcool-logo"
       />
     </div>
@@ -32,7 +36,7 @@
         <div class="sideBar-link-number">0</div>
       </div>
       <div class="sideBar-link">
-        <a class="link" href="detail">Mon compte</a>
+        <a class="link" href="/detail">Mon compte</a>
       </div>
     </div>
     <button-component
@@ -62,6 +66,7 @@ export default {
     "button-component": ButtonComponent,
   },
   methods: {
+
     deco(router) {
       localStorage.clear();
       this.$store.state.isConnected = false;
@@ -74,6 +79,7 @@ export default {
       this.$store.state.allPost = test;
     },
     allPost() {
+      this.showDetailUser();
       fetchAllPostRequest();
     },
   },

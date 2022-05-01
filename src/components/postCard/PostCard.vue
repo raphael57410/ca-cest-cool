@@ -3,7 +3,7 @@
     <div class="postCard-img-container">
       <img
         class="postCard-img"
-        src="../../assets/logo.png"
+        :src="'images/' + post.user[0].profilPicture"
         alt="cacestcool-logo"
       />
     </div>

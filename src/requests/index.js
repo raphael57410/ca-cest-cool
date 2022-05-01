@@ -62,11 +62,17 @@ export const addComentRequest = async (coment, currentUser, postId) => {
         });
 }
 
-export const updateUserRequest = async (newUser) => {
-    return await axios.patch("http://localhost:3000/api/cacestcool/users/update", { body: newUser })
+export const updateUserRequest = async (event, userId) => {
+    const form = event.target;
+    const formData = new FormData(form);
+    return await axios.put(`http://localhost:3000/api/cacestcool/users/update/${userId}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
         .then((response) => {
+            console.log(response.data);
             localStorage.setItem('USER', JSON.stringify(response.data.userUpdated));
-
             return response;
         })
         .catch((error) => {
@@ -76,6 +82,22 @@ export const updateUserRequest = async (newUser) => {
 
 export const changePasswordRequest = async (user, oldPassword, newPassword, comfirmPassword) => {
     return await axios.patch("http://localhost:3000/api/cacestcool/users/password", { body: { user, oldPassword, newPassword, comfirmPassword } })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            return error.response;
+        });
+}
+
+export const addUserRequest = async (e) => {
+    const form = e.target;
+    const formData = new FormData(form);
+    return await axios.post("http://localhost:3000/api/cacestcool/users/add", formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
         .then((response) => {
             return response;
         })

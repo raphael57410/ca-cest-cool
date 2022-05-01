@@ -1,27 +1,42 @@
 <template>
   <div class="detailUser-container">
     <form
-      enctype="multipart/form-data"
-      action=""
+      name="form"
       class="detailUser-form"
-      v-on:submit.prevent="
+      @submit.prevent="
         () => {
-          updateUser(user);
+          updateUser($event);
         }
       "
     >
-      <img src="../../assets/avatar.png" alt="avatar" />
-      <input type="file" />
+      <img
+        class="detailUser-img"
+        :src="
+          user.profilPicture
+            ? 'images/' + user.profilPicture
+            : 'images/avatar.png'
+        "
+        alt="avatar"
+      />
+      <input-component
+        name="images"
+        type="file"
+        v-model="profilPicture"
+        class="register-input"
+      >
+      </input-component>
+
       <input-component
         type="text"
+        name="email"
         v-model="user.email"
         class="detailUser-input"
-        name="email"
         required
       >
       </input-component>
       <input-component
         type="text"
+        name="firstname"
         v-model="user.firstname"
         class="detailUser-input"
         required
@@ -29,6 +44,7 @@
       </input-component>
       <input-component
         type="text"
+        name="lastname"
         v-model="user.lastname"
         class="detailUser-input"
         required
@@ -36,6 +52,7 @@
       </input-component>
       <input-component
         type="text"
+        name="bio"
         v-model="user.bio"
         class="detailUser-input"
         required
@@ -97,6 +114,7 @@ export default {
       oldPassword: "",
       newPassword: "",
       comfirmPassword: "",
+      profilPicture: "",
       user: { ...this.$store.getters.currentUser },
     };
   },
@@ -108,6 +126,12 @@ export default {
     "button-component": ButtonComponent,
   },
   created() {
+    //TODO: voir pour améliorer
+    if (this.$store.getters.currentUser.length > 0) {
+      this.user = this.$store.getters.currentUser[0];
+    } else {
+      this.user = this.$store.getters.currentUser;
+    }
     console.log("detail User:", this.$store.getters.currentUser);
   },
 };

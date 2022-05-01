@@ -36,6 +36,7 @@
       <div class="login-button-container">
         <button type="submit" class="login-button">Se connecter</button>
       </div>
+      <a class="login-link" href="/inscription">Vous avez pas de compte?</a>
       <a class="login-link" href="#">mot de passe oublié ?</a>
     </form>
   </div>

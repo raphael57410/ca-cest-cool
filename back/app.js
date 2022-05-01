@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 const mongose = require('mongoose');
 
@@ -37,6 +38,8 @@ app.use(cors({
 app.use('/ping', (req, res) => {
     res.status(200).send('ping OK');
 });
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // app.use('/api/cacestcool/todos', todosRoutes);
 app.use('/api/cacestcool/users', userRoutes);

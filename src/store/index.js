@@ -6,7 +6,8 @@ import {
     deletePostRequest,
     addComentRequest,
     updateUserRequest,
-    changePasswordRequest
+    changePasswordRequest,
+    addUserRequest,
 } from '@/requests';
 import router from '@/router';
 
@@ -20,6 +21,7 @@ const store = new Vuex.Store({
         loginMessage: "",
         message: "",
         currentUser: [],
+        showDetailUser: false,
     },
     getters: {
         isConnected(state) {
@@ -31,6 +33,9 @@ const store = new Vuex.Store({
         },
         currentUser(state) {
             return state.currentUser;
+        },
+        showDetailUser(state) {
+            return state.showDetailUser;
         }
     },
     mutations: {
@@ -82,9 +87,10 @@ const store = new Vuex.Store({
         },
 
         // update User
-        async updateUser(state, newUser) {
-            const userUpdated = await updateUserRequest(newUser);
-            state.currentUser = userUpdated
+        async updateUser(state, event) {
+            const userUpdated = await updateUserRequest(event, state.currentUser._id);
+            console.log(userUpdated.data.userUpdate);
+            state.currentUser = userUpdated.data.userUpdate
         },
 
         // change password
@@ -99,6 +105,21 @@ const store = new Vuex.Store({
                 state.message = '';
             }, 2000);
         },
+        // add User
+        async addUser(state, newUser, lastname,
+            firstname,
+            email,
+            password,
+            profilPicture,
+            bio,) {
+            const user = await addUserRequest(newUser, lastname,
+                firstname,
+                email,
+                password,
+                profilPicture,
+                bio);
+            console.log(user);
+        },
     },
     actions: {
         // ### LOGIN ###
@@ -108,11 +129,25 @@ const store = new Vuex.Store({
         // ### END LOGIN ###
 
         // ### USER ###
-        updateUser({ commit }, newUser) {
-            commit("updateUser", newUser);
-            commit('initCurrentUser');
+        addUser({ commit }, newUser, lastname,
+            firstname,
+            email,
+            password,
+            profilPicture,
+            bio,) {
+            console.log(newUser);
+            commit("addUser", newUser, lastname,
+                firstname,
+                email,
+                password,
+                profilPicture,
+                bio);
         },
 
+        updateUser({ commit }, event) {
+            commit("updateUser", event);
+            commit('initCurrentUser');
+        },
         changePassWord({ commit }, { user, oldPassword, newPassword, comfirmPassword }) {
             commit("changePassWord", { user, oldPassword, newPassword, comfirmPassword });
         },
