@@ -1,6 +1,5 @@
 .postCard-container {
     display: flex;
-    height: 130px;
     border-radius: 30px;
     background-color: #FFFFFF;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -35,7 +34,7 @@
 }
 
 .postCard-section-container {
-    width: 80%
+    width: 80%;
 }
 
 .postCard-section-title {}
@@ -46,9 +45,18 @@
     text-overflow: ellipsis;
 }
 
+.postCard-delete {
+    background-color: lightcoral;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
 .postCard-social-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .postCard-like-container {

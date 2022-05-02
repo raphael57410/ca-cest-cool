@@ -83,12 +83,10 @@ const store = new Vuex.Store({
         async addComent(state, { coment, postId }) {
             const currentUser = state.currentUser;
             const response = await addComentRequest(coment, currentUser, postId);
-            currentUser.posts.map(test => {
-                console.log(test[0], postId);
-                if (test[0]._id === postId) console.log('je push le commentaire!');
-
-            }
-            )
+            const currentPost = state.allPost.find(post => post._id === postId);
+            console.log(currentPost);
+            currentPost.coment.push([response.data.newComent]);
+            console.log(currentPost);
             console.log(response);
         },
 

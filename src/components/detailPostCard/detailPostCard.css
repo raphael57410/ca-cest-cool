@@ -1,11 +1,10 @@
 .detailPostCard-container {
     top: 20px;
-    width: 50%;
-    height: 100%;
-    padding: 54px 75px 0 0;
+    padding: 54px 75px 0 54px;
     animation: postAnim 2s;
     max-height: 100vh;
     overflow-y: scroll;
+    background-color: white;
 
 }
 
@@ -52,6 +51,9 @@
 .detailPostCard-img {
     max-width: 100%;
     max-height: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 5px;
 
 }
 

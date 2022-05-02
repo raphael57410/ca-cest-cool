@@ -33,9 +33,7 @@
       </div>
       <div class="sideBar-link">
         <div class="link" @click="filterPost">Mes Post</div>
-        <div class="sideBar-link-number">
-          {{ $store.getters.currentUser.posts.length }}
-        </div>
+        <div class="sideBar-link-number">0</div>
       </div>
       <div class="sideBar-link">
         <a class="link" href="/detail">Mon compte</a>

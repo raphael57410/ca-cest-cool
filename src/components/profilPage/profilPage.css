@@ -1,5 +1,6 @@
 .profil-container {
     display: flex;
+    overflow: hidden;
 }
 
 .main-profil-container {

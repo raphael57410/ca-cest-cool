@@ -11,4 +11,5 @@ exports.createComent = async (data) => {
     newComent.coment = coment;
     newComent.like = [];
     newComent.save();
+    return newComent
 }

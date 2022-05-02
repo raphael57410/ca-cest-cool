@@ -14,11 +14,13 @@
         <span v-if="post.user[0]._id === $store.state.currentUser._id"
           >Modifier</span
         >
-        <span
+        <div
+          class="postCard-delete"
           v-if="post.user[0]._id === $store.state.currentUser._id"
           @click="deletePost(post._id)"
-          >Supprimer</span
         >
+          Supprimer
+        </div>
         <div class="postCard-coment-container">
           {{ post.coment.length }}
           <font-awesome-icon icon="fa-regular fa-comment" />
