@@ -3,15 +3,14 @@ const Coment = require("../models/Coment");
 
 
 // create new Post
-exports.createPost = async (data) => {
-    const { user, description, image, like } = data;
+exports.createPost = async (data, filename) => {
+    const user = JSON.parse(data.user);
     const newPost = new Post();
 
-    newPost.user = data.currentUser;
-    newPost.title = data.title;
+    newPost.user = user;
+    newPost.title = data.titre;
     newPost.description = data.description;
-    // TODO: ajouter les images dans le formulaire d'ajout
-    newPost.image = 'pas encore fonctionelle';
+    newPost.image = filename;
     newPost.like = false;
     newPost.save();
 }

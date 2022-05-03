@@ -11,12 +11,10 @@
       <h2 class="postCard-section-title">{{ post.title }}</h2>
       <p class="postCard-section-text">{{ post.description }}</p>
       <div class="postCard-social-container">
-        <span v-if="post.user[0]._id === $store.state.currentUser._id"
-          >Modifier</span
-        >
+        <span v-if="post.user[0]._id === currentId">Modifier</span>
         <div
           class="postCard-delete"
-          v-if="post.user[0]._id === $store.state.currentUser._id"
+          v-if="post.user[0]._id === currentId"
           @click="deletePost(post._id)"
         >
           Supprimer
@@ -42,6 +40,11 @@ import { mapActions } from "vuex";
 import "./postCard.css";
 
 export default {
+  data() {
+    return {
+      currentId: "",
+    };
+  },
   props: {
     post: Object,
   },
@@ -50,6 +53,13 @@ export default {
     clickEvent() {
       this.$emit("showPost");
     },
+  },
+  created() {
+    if (this.$store.getters.currentUser.length > 0) {
+      this.currentId = this.$store.getters.currentUser[0]._id;
+    } else {
+      this.currentId = this.$store.getters.currentUser._id;
+    }
   },
   name: "PostCard",
 };

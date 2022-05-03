@@ -4,23 +4,28 @@
     <form
       v-on:submit.prevent="
         () => {
-          addPost({ titre, description });
+          addPost($event);
           titre = '';
           description = '';
+          postPicture = '';
         }
       "
       class="postForm"
     >
+      <input-component name="images" type="file" v-model="postPicture">
+      </input-component>
       <input-component
         v-model="titre"
         type="text"
         placeholder="Titre du post"
+        name="titre"
       ></input-component>
       <textarea
         class="input"
         v-model="description"
         type="text"
         placeholder="description du post"
+        name="description"
       ></textarea>
       <button-component
         class="postForm-button"
@@ -45,6 +50,7 @@ export default {
     return {
       titre: "",
       description: "",
+      postPicture: "",
     };
   },
   components: {

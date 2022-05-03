@@ -16,6 +16,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         allPost: [],
+        allPostNumber: 0,
         loader: false,
         isConnected: localStorage.getItem('isConnected') ? localStorage.getItem('isConnected') : false,
         loginMessage: "",
@@ -65,10 +66,10 @@ const store = new Vuex.Store({
                 else if (response.status === 404) state.loginMessage = response.data.message;
         },
         // add Post
-        async addPost(state, { titre, description }) {
+        async addPost(state, event) {
 
             state.loader = true;
-            const response = await addPostRequest(titre, description);
+            const response = await addPostRequest(event);
             if (response.status === 201) {
                 state.loader = false;
             }
@@ -84,10 +85,7 @@ const store = new Vuex.Store({
             const currentUser = state.currentUser;
             const response = await addComentRequest(coment, currentUser, postId);
             const currentPost = state.allPost.find(post => post._id === postId);
-            console.log(currentPost);
             currentPost.coment.push([response.data.newComent]);
-            console.log(currentPost);
-            console.log(response);
         },
 
         // update User
@@ -162,8 +160,8 @@ const store = new Vuex.Store({
             commit("initData", initialTodos ? initialTodos : []);
         },
 
-        addPost({ commit }, { titre, description }) {
-            commit("addPost", { titre, description });
+        addPost({ commit }, event) {
+            commit("addPost", event);
         },
 
         deletePost({ commit }, postId) {

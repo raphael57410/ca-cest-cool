@@ -2,8 +2,7 @@
   <div
     class="comentCard-container"
     :class="{
-      'comentCard-container user':
-        coment.user[0][0]._id === $store.state.currentUser._id,
+      'comentCard-container user': coment.user[0][0]._id === currentUserId,
     }"
   >
     <div class="comentCard-img-container">
@@ -37,11 +36,23 @@
 import "./comentCard.css";
 
 export default {
+  data() {
+    return {
+      currentUserId: "",
+    };
+  },
   props: {
     coment: Object,
   },
   methods: {
     // ...mapActions(["deletePost"]),
+  },
+  created() {
+    if (this.$store.getters.currentUser.length > 0) {
+      this.currentUserId = this.$store.getters.currentUser[0]._id;
+    } else {
+      this.currentUserId = this.$store.getters.currentUser._id;
+    }
   },
   name: "ComentCard",
 };

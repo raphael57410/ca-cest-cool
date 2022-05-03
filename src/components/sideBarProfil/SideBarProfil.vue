@@ -10,11 +10,7 @@
     <div class="sideBar-picture">
       <img
         class="sideBar-picture"
-        :src="
-          $store.getters.currentUser.profilPicture
-            ? 'images/' + $store.getters.currentUser.profilPicture
-            : 'images/avatar.png'
-        "
+        :src="avatar ? 'images/' + avatar : 'images/avatar.png'"
         alt="cacestcool-logo"
       />
     </div>
@@ -25,15 +21,13 @@
     <div class="sideBar-link-container">
       <div class="sideBar-link">
         <div class="link" @click="allPost">Mon Mur</div>
-        <div class="sideBar-link-number">2</div>
-      </div>
-      <div class="sideBar-link">
-        <a class="link" href="#">Mes Messages</a>
-        <div class="sideBar-link-number">3</div>
+        <div class="sideBar-link-number">
+          {{ this.$store.state.allPostNumber }}
+        </div>
       </div>
       <div class="sideBar-link">
         <div class="link" @click="filterPost">Mes Post</div>
-        <div class="sideBar-link-number">0</div>
+        <div class="sideBar-link-number">{{ postNumber }}</div>
       </div>
       <div class="sideBar-link">
         <a class="link" href="/detail">Mon compte</a>
@@ -58,8 +52,11 @@ export default {
   name: "SideBar",
   data() {
     return {
+      currentUserId: "",
       firstname: "",
       lastname: "",
+      avatar: "",
+      postNumber: 0,
     };
   },
   components: {
@@ -72,24 +69,30 @@ export default {
       router.push("./");
     },
     filterPost() {
-      const test = this.$store.state.allPost.filter(
-        (post) => post.user[0]._id == this.$store.state.currentUser._id
+      const userPost = this.$store.state.allPost.filter(
+        (post) => post.user[0]._id == this.currentUserId
       );
-      this.$store.state.allPost = test;
+      this.$store.state.allPost = userPost;
     },
     allPost() {
-      this.showDetailUser();
       fetchAllPostRequest();
     },
   },
   created() {
+    fetchAllPostRequest();
     //TODO: voir pour améliorer
     if (this.$store.getters.currentUser.length > 0) {
       this.firstname = this.$store.getters.currentUser[0].firstname;
       this.lastname = this.$store.getters.currentUser[0].lastname;
+      this.avatar = this.$store.getters.currentUser[0].profilPicture;
+      this.postNumber = this.$store.getters.currentUser[0].posts.length;
+      this.currentUserId = this.$store.getters.currentUser[0]._id;
     } else {
       this.firstname = this.$store.getters.currentUser.firstname;
       this.lastname = this.$store.getters.currentUser.lastname;
+      this.avatar = this.$store.getters.currentUser.profilPicture;
+      this.postNumber = this.$store.getters.currentUser.posts.length;
+      this.currentUserId = this.$store.getters.currentUser._id;
     }
   },
 };

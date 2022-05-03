@@ -20,6 +20,8 @@ export const fetchAllPostRequest = async () => {
     axios.get("http://localhost:3000/api/cacestcool/post/all", { headers: { Authorization: `Bearer ${TOKEN}` } })
         .then((response) => {
             store.state.allPost = response.data.reverse();
+            store.state.allPostNumber = response.data.length;
+
             // storeDispatch("allPost", response.data.reverse())
             store.state.loader = false;
         })
@@ -27,10 +29,12 @@ export const fetchAllPostRequest = async () => {
             console.log("Error fetch", error);
         });
 }
-
-export const addPostRequest = async (title, description) => {
-    const currentUser = JSON.parse(localStorage.getItem('USER'));
-    return await axios.post("http://localhost:3000/api/cacestcool/post/add", { body: { title, description, currentUser } })
+//!laaaaaaa
+export const addPostRequest = async (event) => {
+    const currentUser = localStorage.getItem('USER')
+    const formData = new FormData(event.target);
+    formData.append('user', currentUser);
+    return await axios.post("http://localhost:3000/api/cacestcool/post/add", formData)
         .then((response) => {
             return response;
         })

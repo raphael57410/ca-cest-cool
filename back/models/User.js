@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 const Post = require('../models/Post');
 
 const userSchema = new Schema({
+    id: { type: Schema.Types.ObjectId },
     lastname: { type: String, minlength: 3, maxlength: 15 },
     firstname: { type: String, minlength: 3, maxlength: 15 },
     email: { type: String },

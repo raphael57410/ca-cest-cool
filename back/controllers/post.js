@@ -4,8 +4,9 @@ const jwt = require('jsonwebtoken');
 
 // Create Post
 exports.createPost = async (req, res) => {
+
     try {
-        postServices.createPost(req.body.body);
+        postServices.createPost(req.body, req.file.filename);
         res.status(201).send('le post a été crée!');
     } catch (error) {
         console.log(error);
