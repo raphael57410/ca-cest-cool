@@ -24,10 +24,10 @@
           <font-awesome-icon icon="fa-regular fa-comment" />
         </div>
         <div class="postCard-like-container">
-          <font-awesome-icon v-if="!post.like" icon="fa-regular fa-thumbs-up" />
+          {{ post.like.length }}
           <font-awesome-icon
-            v-else-if="post.like"
             icon="fa-solid fa-thumbs-up"
+            class="postCard-like-thumb"
           />
         </div>
       </div>
@@ -60,6 +60,10 @@ export default {
     } else {
       this.currentId = this.$store.getters.currentUser._id;
     }
+  },
+  updated() {
+    console.log("je passe dans le updated de la carte!");
+    this.$emit("closePost");
   },
   name: "PostCard",
 };

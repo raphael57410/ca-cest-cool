@@ -8,6 +8,8 @@ import {
     updateUserRequest,
     changePasswordRequest,
     addUserRequest,
+    likePostRequest,
+    fetchAllPostRequest
 } from '@/requests';
 import router from '@/router';
 
@@ -122,6 +124,12 @@ const store = new Vuex.Store({
                 bio);
             console.log(user);
         },
+
+        // like Post
+        async likePost(state, postId) {
+            const postLiked = await likePostRequest(postId, state.currentUser._id);
+            if (postLiked.status === 200) fetchAllPostRequest();
+        },
     },
     actions: {
         // ### LOGIN ###
@@ -162,6 +170,10 @@ const store = new Vuex.Store({
 
         addPost({ commit }, event) {
             commit("addPost", event);
+        },
+
+        likePost({ commit }, postId) {
+            commit("likePost", postId);
         },
 
         deletePost({ commit }, postId) {

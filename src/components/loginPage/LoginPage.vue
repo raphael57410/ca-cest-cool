@@ -56,6 +56,9 @@ export default {
       password: "",
     };
   },
+  created() {
+    if (this.$store.state.isConnected) this.$router.push("/profil");
+  },
   components: {
     "input-component": InputComponent,
     "loader-component": LoaderComponent,

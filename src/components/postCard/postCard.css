@@ -15,8 +15,8 @@
 .postCard-container:hover::after {
     content: ">";
     position: absolute;
-    right: -25px;
-    bottom: 50%;
+    right: -20px;
+    bottom: 45%;
 }
 
 .postCard-img-container {
@@ -61,4 +61,5 @@
 
 .postCard-like-container {
     margin-right: 10px;
+    color: lightblue;
 }

@@ -11,6 +11,11 @@
           @onClick="$router.push('./formulaire')"
         ></button-component>
         <post-card
+          @closePost="
+            () => {
+              showPost = false;
+            }
+          "
           @showPost="showPostfunc(post)"
           v-for="post in $store.getters.allPost"
           :post="post"

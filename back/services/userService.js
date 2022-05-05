@@ -29,6 +29,7 @@ exports.createUser = async (lastname, firstname, email, password, profilPictureP
     newUser.password = passHash;
     newUser.profilPicture = profilPicturePath;
     newUser.bio = bio;
+    newUser.like = [];
     newUser.save();
 }
 

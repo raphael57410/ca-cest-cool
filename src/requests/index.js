@@ -29,8 +29,9 @@ export const fetchAllPostRequest = async () => {
             console.log("Error fetch", error);
         });
 }
-//!laaaaaaa
+
 export const addPostRequest = async (event) => {
+
     const currentUser = localStorage.getItem('USER')
     const formData = new FormData(event.target);
     formData.append('user', currentUser);
@@ -102,6 +103,16 @@ export const addUserRequest = async (e) => {
             'Content-Type': 'multipart/form-data'
         }
     })
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => {
+            return error.response;
+        });
+}
+
+export const likePostRequest = async (postId, userId) => {
+    return await axios.post(`http://localhost:3000/api/cacestcool/post/like/${postId}`, { userId })
         .then((response) => {
             return response;
         })

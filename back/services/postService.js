@@ -11,7 +11,7 @@ exports.createPost = async (data, filename) => {
     newPost.title = data.titre;
     newPost.description = data.description;
     newPost.image = filename;
-    newPost.like = false;
+    newPost.like = [];
     newPost.save();
 }
 
@@ -37,4 +37,13 @@ exports.deletePost = async (postId) => {
     const allPost = await Post.findOneAndDelete({ _id: postId });
 
     return allPost;
+}
+
+exports.likePost = async (postId, userId) => {
+
+    const post = await Post.findOne({ _id: postId }).exec();
+
+    post.like.push(userId);
+
+    return post.save();
 }

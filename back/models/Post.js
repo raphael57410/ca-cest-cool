@@ -5,10 +5,14 @@ const Coment = require('../models/Coment');
 const postSchema = Schema({
     user: [{ type: Object, ref: User }],
     coment: [{ type: Array, ref: Coment }],
-    title: { type: String },
-    description: { type: String },
-    image: { type: String },
-    like: { type: Boolean },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    image: { type: String, required: true },
+    like: [{
+        type: Schema.Types.ObjectId,
+        ref: User,
+        required: false,
+    }],
     postCreated: { type: Date, default: Date.now },
 }
 );

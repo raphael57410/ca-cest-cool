@@ -14,8 +14,11 @@
         <span
           >par {{ post.user[0].firstname + " " + post.user[0].lastname }}</span
         >
-        <span>{{ post.like }} likes</span>
-        <button class="detailPostCard-like-button" @click="likePost(post)">
+        <button
+          v-if="!post.like.includes(post.user[0]._id)"
+          class="detailPostCard-like-button"
+          @click="likePost(post._id)"
+        >
           J'aime
         </button>
       </div>
@@ -86,13 +89,10 @@ export default {
     "input-component": InputComponent,
   },
   methods: {
-    ...mapActions(["addComent"]),
+    ...mapActions(["addComent", "likePost"]),
 
     focusInput() {
       this.$refs.email.$el.focus();
-    },
-    likePost(post) {
-      post.like = !post.like;
     },
   },
 };
